@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- link the flask way -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/myjs.js') }}"></script> -->
+    <title>Document</title>
+    <body>
+
+        <!-- 
+        The COLOR PARAM IS MYCOLOR
+        # If user visits /ninja/blue, it should only display the Ninja Turtle Leonardo.
+        # /ninja/orange - Ninja Turtle Michelangelo.
+        # /ninja/red - Ninja Turtle Raphael
+        # /ninja/purple - Ninja Turtle Donatello 
+        # 4 If a user tries to hack into your web app by specifying a color or string combination other 
+        # than the colors (Blue, Orange, Red, and Purple), example: /ninja/black or /ninja/123, 
+         # then display the image notapril.jpg-->
+        #{% print mycolor %}
+        {%if mycolor%}
+            {% if mycolor == "blue" %}
+                <img src="{{ url_for('static', filename='img/leonardo.jpg') }}">
+            {% elif mycolor == "orange" %}
+                <img src="{{ url_for('static', filename='img/michelangelo.jpg') }}">
+            {% elif mycolor == "red" %}
+                <img src="{{ url_for('static', filename='img/raphael.jpg') }}">
+            {% elif mycolor == "purple" %}
+                <img src="{{ url_for('static', filename='img/donatello.jpg') }}">
+            {%else%}
+                <img src="{{ url_for('static', filename='img/notapril.jpg') }}">
+            {% endif %}        
+        {% else %}
+            <img src="{{ url_for('static', filename='img/tmnt.png') }}">
+        {% endif %}  
+        
+    </body>
+</html>
+    
